@@ -44,9 +44,8 @@ def get_dynamic(cookie):
     print(json.loads(req))
 
 if __name__=="__main__":
-    csrf="11f7a1f66167e15c1bf39c3dafa4dfb6"
-    cookie="SESSDATA=85919475%2C1631504845%2C795e8%2A31"
-    #get_my5B(cookie,csrf)
+    import sys
+    csrf,cookie=sys.argv[1].split(" ")
     get_my5B(cookie,csrf)
 
 

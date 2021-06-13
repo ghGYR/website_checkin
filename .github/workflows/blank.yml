@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: auto_check_in
+name: get_my5B
 
 # Controls when the action will run. 
 on:
@@ -11,7 +11,7 @@ on:
     branches: [ main ]
   schedule:
   # 定时任务
-    - cron: '0 0 0 0 1/1 ?'
+    - cron: '0 0 1,15,28 * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,10 +20,10 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   bot:
-    name: RUC check in
+    name: get_my5B
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    environment: RUC
+    environment: CONFIG
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -32,5 +32,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         env:
-          config: ${{secrets.CONFIG}}
-        run: python3 bilibili_checkin.py
+          config: ${{secrets.bilibili}}
+        run: python3 bilibili_checkin.py "$config"
