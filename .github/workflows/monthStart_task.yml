@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: add_coins
+name: monthStart_task
 
 # Controls when the action will run. 
 on:
@@ -11,7 +11,7 @@ on:
     branches: [ main ]
   schedule:
   # 定时任务
-    - cron: '0 11 * * *'
+    - cron: '0 0 1,15,28 * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,7 +20,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   bot:
-    name: add_coins
+    name: get_my5B
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: CONFIG
@@ -33,4 +33,4 @@ jobs:
       - name: Run a one-line script
         env:
           config: ${{secrets.bilibili}}
-        run: python3 auto_add_coins.py "$config"
+        run: python3 auto_get5B.py "$config"

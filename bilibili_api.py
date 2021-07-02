@@ -22,7 +22,7 @@ def auto_add_coins(cookie,csrf,avid):
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.39",
-    "referer": "https://www.bilibili.com/video/"
+    "referer": "https://www.bilibili.com/video/" #必须有
 }
     data={"aid":avid,"csrf":csrf,"multiply":"1","select_like":"1","cross_domain":"false"}
     data=bytes(parse.urlencode(data),encoding="utf8")

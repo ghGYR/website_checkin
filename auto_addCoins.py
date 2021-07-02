@@ -1,4 +1,4 @@
-from bilibili_checkin import *
+from bilibili_api import *
 import re
 import json
 
