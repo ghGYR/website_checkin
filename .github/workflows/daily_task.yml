@@ -33,4 +33,4 @@ jobs:
       - name: Run a one-line script
         env:
           config: ${{secrets.bilibili}}
-        run: python3 auto_add_coins.py "$config"
+        run: python3 auto_addCoins.py "$config"
