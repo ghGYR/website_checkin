@@ -15,11 +15,17 @@ if __name__=="__main__":
         if total==0:
             break
         else:
-            req=auto_add_coins(cookie,csrf,aid)
-            ret=json.loads(req)
-            if ret['code']==0:
-                total-=1
-                print(f"{aid}")
+            add_f=False
+            try:
+                req=auto_add_coins(cookie,csrf,aid)
+                print(req)
+                ret=json.loads(req)
+                if ret['code']==0:
+                    total-=1
+                    add_f=True
+            except:
+                pass
+            print(f"{aid}: {add_f}")
 
         
     
