@@ -3,6 +3,8 @@ from urllib import parse
 from http import cookiejar
 import json
 import time
+import gzip
+
 
 def query_privilege(cookie):
     url="https://api.bilibili.com/x/vip/privilege/my"
@@ -16,8 +18,8 @@ def auto_add_coins(cookie,csrf,avid):
     url="https://api.bilibili.com/x/web-interface/coin/add"
     headers={
     "Cookie":cookie,
-    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-    "accept-encoding": "gzip, deflate, br",
+    #"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    #"accept-encoding": "gzip, deflate, br",
     "content-length": "94",
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
@@ -27,8 +29,8 @@ def auto_add_coins(cookie,csrf,avid):
     data={"aid":avid,"csrf":csrf,"multiply":"1","select_like":"1","cross_domain":"false"}
     data=bytes(parse.urlencode(data),encoding="utf8")
     req = rq.Request(url=url,headers=headers,data=data, method='POST')
-    req = rq.urlopen(req)
-    req=req.read().decode('utf-8')
+    rep = rq.urlopen(req)
+    rep=rep.read().decode('utf-8')
     return req
 
 def get_my5B(cookie,csrf):
