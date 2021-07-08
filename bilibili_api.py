@@ -31,7 +31,7 @@ def auto_add_coins(cookie,csrf,avid):
     req = rq.Request(url=url,headers=headers,data=data, method='POST')
     rep = rq.urlopen(req)
     rep=rep.read().decode('utf-8')
-    return req
+    return rep
 
 def get_my5B(cookie,csrf):
     url="https://api.bilibili.com/x/vip/privilege/receive"
