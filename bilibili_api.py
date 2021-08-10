@@ -18,8 +18,6 @@ def auto_add_coins(cookie,csrf,avid):
     url="https://api.bilibili.com/x/web-interface/coin/add"
     headers={
     "Cookie":cookie,
-    #"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-    #"accept-encoding": "gzip, deflate, br",
     "content-length": "94",
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
@@ -43,6 +41,16 @@ def get_my5B(cookie,csrf):
     req=req.read().decode('utf-8')
     print(req)
 
+def chrage(cookie,csrf,bpnum):
+    url="https://api.bilibili.com/x/ugcpay/web/v2/trade/elec/pay/quick"
+    headers={"Cookie":cookie}
+    data={"csrf":csrf,"bp_num":bpnum,"is_bp_remains_prior": "true","up_mid": "10363537","otype": "up","oid": "10363537"}
+    data=bytes(parse.urlencode(data),encoding="utf8")
+    req = rq.Request(url=url,headers=headers,data=data, method='POST')
+    req = rq.urlopen(req)
+    req=req.read().decode('utf-8')
+    print(req)
+    return req
 def get_dynamic(cookie):
     url="https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=10363537&type_list=268435455&from=weball&platform=web"
     headers={"Cookie":cookie}
