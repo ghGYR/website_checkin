@@ -4,7 +4,9 @@ import json
 
 if __name__=="__main__":
     import sys
-    csrf,cookie=sys.argv[1].split(" ")
+    parameters=json.loads(sys.argv[1])
+    csrf=parameters["csrf"]
+    cookie=parameters["cookie"]
     get_dynamic(cookie)
     mydynmic=get_dynamic(cookie)
     pattern = re.compile(r'\\"aid\\":(\d+)')
